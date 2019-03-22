@@ -35,9 +35,6 @@ for s in listSons:
     dimSons.append(mfcc_feat.shape[0])
     lesMfcc = np.append(lesMfcc, mfcc_feat, axis=0)
 
-# BOW initialization
-bows = np.empty(shape=(0, k1), dtype=int)
-
 # everything ready for the 1st k-means
 try:
     with open("../resources/kmeans1.txt", "rb") as input:
@@ -47,6 +44,9 @@ except EOFError:
 
 if verbose:
     print("result of kmeans 1", kmeans1.labels_)
+
+# BOW initialization
+bows = np.empty(shape=(0, k1), dtype=int)
 
 # writing the BOWs for second k-means
 i = 0
